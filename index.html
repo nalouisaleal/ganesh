@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganesh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+
+    </main>
+   
+    <canvas id="binaryCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById("binaryCanvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const fontSize = 15;
+        const columns = Math.floor(canvas.width / fontSize);
+        const drops = Array(columns).fill(0);
+
+        function drawBinary(){
+            ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#0F0";
+            ctx.font = '${fontSize}px monospace';
+
+            for (let i = 0; i < drops.length; i++){
+                const text = Math.random() > 0.5 ? "1" : "0";
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+
+                ctx.fillText(text, x, y);
+
+                if(y > canvas.height && Math.random() > 0.975){
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawBinary, 50);
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            drops.lenght = Math.floor(canvas.width / fontSize);
+            drops.fill(0);
+        })
+    </script>
+
+    <footer>
+        <div id="footer_content"> 
+        
+            <div id="footer_contacts">
+                
+                <div id="footer_social_midia">
+                    <a href="" class="footer-link" id="insta">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="" class="footer-link" id="facebook">
+                        <i class="fa-brands fa-square-facebook"></i>
+                    </a>
+                    <a href="" class="footer-link" id="twitter">
+                        <i class="fa-brands fa-square-x-twitter"></i>
+                    </a>
+                    <a href="" class="footer-link" id="git">
+                        <i class="fa-brands fa-square-github"></i>
+                    </a>
+                    <a href="" class="footer-link" id="youtube">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+
+            </div> 
+        </div>
+        <div id="footer_copyright">
+            &#169
+            2025 Ganesh
+        </div>
+    </footer>
+
+</body>
+</html>
