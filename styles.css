@@ -21,6 +21,13 @@ footer{
     color:rgb(255, 255, 255)
 }
 
+/*#flex-container{
+    display: flex;
+    background-color: #f1f1f1;
+    position: relative;
+    z-index:10;
+}*/
+
 #footer_content{
     background-color: black;
     display: grid;
